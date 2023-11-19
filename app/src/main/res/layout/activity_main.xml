@@ -24,6 +24,6 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="하위2" />
+        android:text="하위ㅇㅇㅇㅇㅇㅇㅇ2" />
 
 </LinearLayout>
