@@ -21,21 +21,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="searchAllStore"
-                android:text="가게 조회"
+                android:text="전체 가게 목록 조회"
                 android:layout_weight="1"/>
         <Button
                 android:id="@+id/getCategoryButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="searchAllCategory"
-                android:text="카테고리 조회"
+                android:text="전체 카테고리 목록 조회"
                 android:layout_weight="1"/>
         <Button
                 android:id="@+id/searchCategoryButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="searchCategory"
-                android:text="가게의 카테고리 조회"
+                android:onClick="searchDetailInfo"
+                android:text="가게 상세 정보 조회"
                 android:layout_weight="1"/>
     </LinearLayout>
 

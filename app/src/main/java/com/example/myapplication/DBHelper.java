@@ -46,7 +46,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO category (name) VALUES ('레스토랑');");
 
         // 가게
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id, image_url) VALUES ('우마이도', '010-4937-1765','롯데리아 앞', '5.0', 4, 'https://pcmap.place.naver.com/restaurant/985165477/home?entry=pll&from=nx&fromNxList=true&from=map&fromPanelNum=2&x=129.26061168205982&y=35.542100763696475&timestamp=202311201138');");
+        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id, image_url) VALUES ('우마이도', '010-4937-1765','롯데리아 앞', '5.0', 4, 'https://my-bucket-for-spring.s3.ap-northeast-2.amazonaws.com/46eaa2aa-5592-463a-883d-63511d4086e1%E3%85%8A%E3%85%81.jpeg');");
     }
 
     @Override
