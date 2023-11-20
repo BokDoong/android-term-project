@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     TextView editResult;
     ImageView imageView;
     Bitmap bitmap;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
 

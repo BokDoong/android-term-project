@@ -29,6 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "address TEXT, " +
                 "rating TEXT, " +
                 "category_id INTEGER, " +
+                "image_url TEXT," +
                 "FOREIGN KEY (category_id) REFERENCES category(_id)" +
                 ");");
 
@@ -45,15 +46,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO category (name) VALUES ('레스토랑');");
 
         // 가게
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('우마이도', '010-4937-1765','롯데리아 앞', '5.0', 4);");
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('라멘집입니다', '010-1541-6621','울산 남구 문수로75번길 21', '4.54', 4);");
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('시미루 라멘', '010-6123-7453','울산 남구 대학로43번길 16 1층', '3.1', 4);");
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('삼미', '010-1231-5234','울과대 앞', '4.0', 1);");
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('정일품', '010-1234-3922','울과대 앞2', '4.5', 1);");
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('본가어탕', '010-1561-1231','울산 남구 대학로1번길 35 1층 본가어탕', '4.64', 1);");
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('돌돌파스타', '010-5930-1352','울산 남구 대학로84번길 12 양지빌딩 1층', '4.4', 3);");
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('hi', '010-1235-6523','울산 남구 대학로84번길 12 양지빌딩 1층', '1.4', 3);");
-
+        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id, image_url) VALUES ('우마이도', '010-4937-1765','롯데리아 앞', '5.0', 4, 'https://pcmap.place.naver.com/restaurant/985165477/home?entry=pll&from=nx&fromNxList=true&from=map&fromPanelNum=2&x=129.26061168205982&y=35.542100763696475&timestamp=202311201138');");
     }
 
     @Override
