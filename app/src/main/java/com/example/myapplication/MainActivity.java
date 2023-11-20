@@ -5,10 +5,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
     DBHelper helper;
@@ -16,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText storeNameForSearchCategory;
     TextView editResult;
+    ImageView imageView;
+    Bitmap bitmap;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,11 +40,48 @@ public class MainActivity extends AppCompatActivity {
             db = helper.getReadableDatabase();
         }
 
+        imageView = findViewById(R.id.imageView);
+
         storeNameForSearchCategory = (EditText) findViewById(R.id.searchCategoryText);
         editResult = (TextView) findViewById(R.id.resultView);
 
-        // 더미 데이터 추가
-        insertDummyData(db);
+        Thread uThread = new Thread() {
+            @Override
+            public void run(){
+                try{
+                    // 이미지 URL 경로
+                    URL url = new URL("https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory&fname=https://k.kakaocdn.net/dn/EShJF/btquPLT192D/SRxSvXqcWjHRTju3kHcOQK/img.png");
+
+                    // web에서 이미지를 가져와 ImageView에 저장할 Bitmap을 만든다.
+                    HttpURLConnection conn = (HttpURLConnection)url.openConnection();
+                    conn.setDoInput(true); // 서버로부터 응답 수신
+                    conn.connect(); //연결된 곳에 접속할 때 (connect() 호출해야 실제 통신 가능함)
+
+                    InputStream is = conn.getInputStream(); //inputStream 값 가져오기
+                    bitmap = BitmapFactory.decodeStream(is); // Bitmap으로 변환
+
+                }catch (MalformedURLException e){
+                    e.printStackTrace();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        uThread.start(); // 작업 Thread 실행
+
+        try{
+            //메인 Thread는 별도의 작업 Thread가 작업을 완료할 때까지 대기해야 한다.
+            //join() 호출하여 별도의 작업 Thread가 종료될 때까지 메인 Thread가 기다리도록 한다.
+            //join() 메서드는 InterruptedException을 발생시킨다.
+            uThread.join();
+
+            //작업 Thread에서 이미지를 불러오는 작업을 완료한 뒤
+            //UI 작업을 할 수 있는 메인 Thread에서 ImageView에 이미지 지정
+            imageView.setImageBitmap(bitmap);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
     }
 
     // 모든 카테고리 조회
@@ -87,27 +135,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void insertDummyData(SQLiteDatabase db) {
-        // 카테고리
-        db.execSQL("INSERT INTO category VALUES (1, '한식');");
-        db.execSQL("INSERT INTO category VALUES (2, '중식');");
-        db.execSQL("INSERT INTO category VALUES (3, '양식');");
-        db.execSQL("INSERT INTO category VALUES (4, '일식');");
-        db.execSQL("INSERT INTO category VALUES (5, '카페');");
-        db.execSQL("INSERT INTO category VALUES (6, '술집');");
-        db.execSQL("INSERT INTO category VALUES (7, '분식');");
-        db.execSQL("INSERT INTO category VALUES (8, '아시아');");
-        db.execSQL("INSERT INTO category VALUES (9, '패스트푸드');");
-        db.execSQL("INSERT INTO category VALUES (10, '레스토랑');");
-
-        // 가게
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('우마이도', '010-4937-1765','롯데리아 앞', '5.0', 4);");
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('라멘집입니다', '010-1541-6621','울산 남구 문수로75번길 21', '4.54', 4);");
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('시미루 라멘', '010-6123-7453','울산 남구 대학로43번길 16 1층', '3.1', 4);");
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('삼미', '010-1231-5234','울과대 앞', '4.0', 1);");
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('정일품', '010-1234-3922','울과대 앞2', '4.5', 1);");
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('본가어탕', '010-1561-1231','울산 남구 대학로1번길 35 1층 본가어탕', '4.64', 1);");
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('돌돌파스타', '010-5930-1352','울산 남구 대학로84번길 12 양지빌딩 1층', '4.4', 3);");
-        db.execSQL("INSERT INTO store (name, tel, address, rating, category_id) VALUES ('hi', '010-1235-6523','울산 남구 대학로84번길 12 양지빌딩 1층', '1.4', 3);");
-    }
 }

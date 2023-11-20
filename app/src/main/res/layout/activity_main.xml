@@ -1,47 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
     <EditText
-        android:id="@+id/searchCategoryText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="가게명"
-        android:inputType="text" />
+            android:id="@+id/searchCategoryText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="가게명"
+            android:inputType="text" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <Button
-            android:id="@+id/getStoreButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="searchAllStore"
-            android:text="가게 조회"
-            android:layout_weight="1"/>
+                android:id="@+id/getStoreButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="searchAllStore"
+                android:text="가게 조회"
+                android:layout_weight="1"/>
         <Button
-            android:id="@+id/getCategoryButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="searchAllCategory"
-            android:text="카테고리 조회"
-            android:layout_weight="1"/>
+                android:id="@+id/getCategoryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="searchAllCategory"
+                android:text="카테고리 조회"
+                android:layout_weight="1"/>
         <Button
-            android:id="@+id/searchCategoryButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="searchCategory"
-            android:text="가게의 카테고리 조회"
-            android:layout_weight="1"/>
+                android:id="@+id/searchCategoryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="searchCategory"
+                android:text="가게의 카테고리 조회"
+                android:layout_weight="1"/>
     </LinearLayout>
 
     <TextView
-        android:id="@+id/resultView"
-        android:layout_width="wrap_content"
+            android:id="@+id/resultView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/layout1" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/layout1" />
+        app:srcCompat="@drawable/ic_launcher_background" />
 
 </LinearLayout>
