@@ -39,8 +39,10 @@ public class MainActivity extends AppCompatActivity {
             db = helper.getReadableDatabase();
         }
 
+        // 이미지 뷰
         imageView = findViewById(R.id.imageView);
 
+        // 메뉴, 텍스트 데이터
         storeNameForSearchCategory = (EditText) findViewById(R.id.searchCategoryText);
         editResult = (TextView) findViewById(R.id.resultView);
     }
@@ -108,6 +110,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // 이미지 url로 불러 오기
     private void showStoreImage(String imgUrl) {
         Thread uThread = new Thread() {
             @Override

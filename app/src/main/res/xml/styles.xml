@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<style name="time">
+    <item name="android:textSize">15sp</item>
+    <item name="android:letterSpacing">-0.02</item>
+    <item name="android:textColor">#1F2021</item>
+</style>
