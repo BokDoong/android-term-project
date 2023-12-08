@@ -24,6 +24,7 @@
             android:textSize="15sp"
             android:letterSpacing="-0.02"
             android:textColor="#1F2021"
+            android:fontFamily="@font/pretendard"
             />
 
         <ImageView
@@ -68,12 +69,26 @@
 
 
         <ImageButton
-            android:id="@+id/some_id"
+            android:id="@+id/back_button"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@drawable/direction"
             android:backgroundTint="#FFFFFF">
         </ImageButton>
+
+        <TextView
+            android:id="@+id/category_tv"
+            android:layout_width="110dp"
+            android:layout_height="35dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginBottom="9dp"
+            android:layout_toRightOf="@+id/back_button"
+            android:fontFamily="@font/pretendard_bold"
+            android:letterSpacing="-0.02"
+            android:lineHeight="20sp"
+            android:text="카테고리"
+            android:textSize="20sp" />
     </RelativeLayout>
 
 </RelativeLayout>
