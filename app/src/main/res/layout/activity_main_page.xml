@@ -7,9 +7,7 @@
     android:clipToOutline="true"
     android:background="#FFFFFF">
 
-    <!-- Auto layout, variables, and unit scale are not yet supported -->
     <RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/status_bar"
         android:layout_width="match_parent"
         android:layout_height="44dp">
@@ -35,7 +33,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="61dp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="17.34dp"
+            android:layout_marginTop="17dp"
             android:src="@drawable/cellular"
             />
 
@@ -47,21 +45,35 @@
             android:layout_marginRight="40.67dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="17dp"
-            android:src="@drawable/Wifi"
+            android:src="@drawable/wifi"
             />
 
-        <!-- Auto layout, variables, and unit scale are not yet supported -->
-        <View
+        <ImageView
             android:id="@+id/battery"
             android:layout_width="24.33dp"
             android:layout_height="11.33dp"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="339.33dp"
             android:layout_alignParentTop="true"
+            android:layout_marginLeft="358dp"
             android:layout_marginTop="17dp"
-            />
-
+            android:src="@drawable/battery"/>
     </RelativeLayout>
 
+    <RelativeLayout
+        android:id="@+id/header_02"
+        android:layout_width="match_parent"
+        android:layout_height="58dp"
+        android:background="#FFFFFF"
+        android:layout_below="@+id/status_bar">
+
+
+        <ImageButton
+            android:id="@+id/some_id"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/direction"
+            android:backgroundTint="#FFFFFF">
+        </ImageButton>
+    </RelativeLayout>
 
 </RelativeLayout>
