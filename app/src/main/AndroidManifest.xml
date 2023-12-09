@@ -15,6 +15,14 @@
         android:requestLegacyExternalStorage="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCaPB_bCh3HEv12JGbS97MB9Zcm47ma_1I" />
+
+        <activity
+            android:name=".StoreDetailPage"
+            android:exported="true" />
         <activity
             android:name=".StoreListPage"
             android:exported="true" />
@@ -27,6 +35,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".MapActivity" />
     </application>
 
 </manifest>

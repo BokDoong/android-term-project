@@ -20,6 +20,7 @@ public class StoreListPage extends AppCompatActivity {
             beforeButton.setBackgroundResource(R.drawable.button_design);
             beforeButton.setTextColor(Color.parseColor("#000000"));
         }
+
         Button button = (Button) findViewById(v.getId());
         button.setBackgroundResource(R.drawable.clicked_button_design);
         button.setTextColor(Color.parseColor("#FFFFFF"));
