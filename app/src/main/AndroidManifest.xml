@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -21,6 +20,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCaPB_bCh3HEv12JGbS97MB9Zcm47ma_1I" />
 
+        <activity
+            android:name=".StoreDetailPage"
+            android:exported="true" />
         <activity
             android:name=".MainPage"
             android:exported="true" />
