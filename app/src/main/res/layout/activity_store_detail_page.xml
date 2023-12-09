@@ -101,7 +101,9 @@
         android:layout_marginTop="105dp"
         android:layout_marginEnd="-13dp"
         android:background="@drawable/filter"
-        android:clipToOutline="true"></RelativeLayout>
+        android:clipToOutline="true">
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/store_info"
@@ -173,11 +175,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="2dp"
         android:layout_marginTop="416dp"
-        android:layout_marginEnd="2dp" >
+        android:layout_marginEnd="-1dp">
 
         <LinearLayout
+            android:id="@+id/frame_9622"
             android:layout_width="343dp"
             android:layout_height="24dp"
             android:orientation="horizontal">
@@ -186,31 +189,72 @@
                 android:id="@+id/location"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
-                android:clipToOutline="true"
                 android:layout_marginLeft="5dp"
+                android:clipToOutline="true"
                 android:gravity="center"
-                android:src="@drawable/location"/>
+                android:src="@drawable/location" />
 
             <TextView
                 android:id="@+id/address_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="울산 남구 대학로 169번길 2"
-                android:lineSpacingExtra="3sp"
                 android:layout_gravity="center"
-                android:gravity="top"
-                android:textSize="14sp"
-                android:textColor="#3F3F42"
                 android:fontFamily="@font/pretendard"
+                android:gravity="top"
                 android:lineHeight="20sp"
+                android:lineSpacingExtra="3sp"
+                android:text="울산 남구 대학로 169번길 2"
+                android:textColor="#3F3F42"
+                android:textSize="14sp"
+
+                />
+            <TextView
+                android:id="@+id/line"
+                android:layout_width="343dp"
+                android:layout_height="0dp"
+                android:background="@drawable/line"
                 />
 
+        </LinearLayout>
 
+
+        <LinearLayout
+            android:id="@+id/frame_9624"
+            android:layout_width="343dp"
+            android:layout_height="20dp"
+            android:layout_below="@+id/frame_9622"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_marginLeft="5dp"
+                android:clipToOutline="true"
+                android:gravity="center"
+                android:src="@drawable/call">
+
+            </ImageView>
+
+            <TextView
+                android:id="@+id/callnumber_id"
+                android:layout_width="94dp"
+                android:layout_height="20dp"
+                android:fontFamily="@font/pretendard"
+                android:gravity="top"
+                android:lineHeight="20sp"
+                android:lineSpacingExtra="3sp"
+                android:text="052-123-1234"
+                android:translationY="-1.65sp" />
+
+            <TextView
+                android:id="@+id/line2"
+                android:layout_width="343dp"
+                android:layout_height="0dp"
+                android:backcground="@drawable/line" />
 
         </LinearLayout>
 
     </RelativeLayout>
-
 
 
 </RelativeLayout>
