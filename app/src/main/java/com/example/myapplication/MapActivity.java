@@ -7,6 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -22,6 +24,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     SQLiteDatabase db;
     DBHelper helper;
+    ArrayList<LatLng> stores = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,8 +92,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         LatLng SGRCF = new LatLng(35.53544, 129.2515);
         LatLng CRMLT = new LatLng(35.54157, 129.2613);
         LatLng PGD = new LatLng(35.54935, 129.2615);
-        LatLng[] names = {UMID,YH,B,MCD,HGJ, GL, ACKTK, SGNKGS, SOBO, MLH};
-        ArrayList<LatLng> stores = new ArrayList<>();
         stores.add(UMID);
         stores.add(YH);
         stores.add(B);
@@ -139,26 +140,44 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         stores.add(CRMLT);
         stores.add(PGD);
 
-        Cursor cursor;
-        cursor = db.rawQuery("SELECT * FROM store", null);
-        for(int i = 0; i <stores.size(); i++){
-            cursor.moveToNext();
-            MarkerOptions markerOptions = new MarkerOptions();
-            markerOptions.position(stores.get(i));
-            markerOptions.title(cursor.getString(1));
-            markerOptions.snippet(cursor.getString(4));
-            mMap.addMarker(markerOptions);
-        }
-
-//        for(int i=0; i<10; i++){
+//        Cursor cursor;
+//        cursor = db.rawQuery("SELECT * FROM store", null);
+//        for(int i = 0; i <stores.size(); i++) {
 //            cursor.moveToNext();
 //            MarkerOptions markerOptions = new MarkerOptions();
-//            markerOptions.position(names[i]);
+//            markerOptions.position(stores.get(i));
 //            markerOptions.title(cursor.getString(1));
 //            markerOptions.snippet(cursor.getString(4));
 //            mMap.addMarker(markerOptions);
 //        }
+//
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UMID, 16));
+    }
+    public void markCategory(View view) {
+        Button button = (Button) findViewById(view.getId());
+        Cursor cursor;
+        Cursor categoryCursor;
+        int category=0;
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(UMID, 16));
+        categoryCursor = db.rawQuery("SELECT * FROM category", null);
+        mMap.clear();
+        while(categoryCursor.moveToNext()){
+            if(categoryCursor.getString(1).equals(button.getText())){
+                category = categoryCursor.getInt(0);
+                break;
+            }
+        }
+        cursor = db.rawQuery("SELECT * FROM store", null);
+        for(int i = 0; i <stores.size(); i++) {
+            cursor.moveToNext();
+            if(cursor.getInt(5) == category){
+                MarkerOptions markerOptions = new MarkerOptions();
+                markerOptions.position(stores.get(i));
+                markerOptions.title(cursor.getString(1));
+                markerOptions.snippet(cursor.getString(4));
+                mMap.addMarker(markerOptions);
+            }
+        }
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(stores.get(0), 16));
     }
 }
