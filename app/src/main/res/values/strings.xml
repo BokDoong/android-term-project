@@ -1,4 +1,16 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="time">9:41</string>
+    <string name="stored_id">
+\u00ea\u00b0\u0080\u00ea\u00b2\u008c \u00ec\u0083\u0081\u00ec\u0084\u00b8
+</string>
+    <string name="name_id">
+\u00ea\u00b3\u00b5\u00ec\u00b0\u00a8 \u00ec\u009a\u00b8\u00ec\u0082\u00b0\u00eb\u008c\u0080\u00ec\u00a0\u0090
+</string>
+    <string name="smallc_id">
+\u00ec\u00b9\u00b4\u00ed\u008e\u0098
+</string>
+    <string name="rating_id">
+5.0
+</string>
 </resources>
