@@ -39,13 +39,11 @@ public class StoreListPage extends AppCompatActivity {
     DBHelper helper;
     SQLiteDatabase db;
     StoreListAdapter storeListAdapter;
-    String category;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_list_page);
-        Intent secondIntent = getIntent();
-        category = secondIntent.getStringExtra("카테고리");
 
         // DB 초기화
         helper = new DBHelper(this);
@@ -57,25 +55,16 @@ public class StoreListPage extends AppCompatActivity {
 
         // 리스트 뷰 + 어댑터 연결
         storeListAdapter = new StoreListAdapter(StoreListPage.this);
-
         storeList = (ListView) findViewById(R.id.store_list);
         storeList.setAdapter(storeListAdapter);
 
-        System.out.println(R.id.btn1);
-        System.out.println(R.id.btn2);
-        System.out.println(R.id.btn3);
-        System.out.println(R.id.btn4);
-        System.out.println(R.id.btn5);
-        System.out.println(R.id.btn6);
-        System.out.println(R.id.btn7);
-        System.out.println(R.id.btn8);
-        System.out.println(R.id.btn9);
-        System.out.println(R.id.btn10);
-
-
         // 메인 -> 카테고리 페이지
-        movedByMainPage();
+        Intent secondIntent = getIntent();
+        String category = secondIntent.getStringExtra("카테고리");
+        movedByMainPage(category);
 
+        // ListView 이벤트
+        // ListView 클릭
         storeList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id){
@@ -127,7 +116,7 @@ public class StoreListPage extends AppCompatActivity {
         storeListAdapter.notifyDataSetChanged();
     }
 
-    public void movedByMainPage() {
+    public void movedByMainPage(String category) {
 
         String[] storeArray = {"한식", "레스토랑", "중식", "양식", "일식", "카페",
                 "술집", "분식", "아시아", "패스트푸드"};
@@ -141,8 +130,6 @@ public class StoreListPage extends AppCompatActivity {
         }
 
         Button button = (Button) findViewById(2131296359 + index);
-        System.out.println(2131296359 + index);
-        System.out.println("여기까지는 OK");
         button.performClick();
     }
 
