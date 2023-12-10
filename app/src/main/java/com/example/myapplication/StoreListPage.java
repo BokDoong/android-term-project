@@ -10,6 +10,7 @@ import android.database.sqlite.SQLiteException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -34,7 +36,6 @@ public class StoreListPage extends AppCompatActivity {
     private ListView storeList;
     private ArrayList<StoreListData> storeListDatas = new ArrayList<>();
     private Bitmap bitmap;
-
     DBHelper helper;
     SQLiteDatabase db;
     StoreListAdapter storeListAdapter;
@@ -54,13 +55,13 @@ public class StoreListPage extends AppCompatActivity {
 
         // 리스트 뷰 + 어댑터 연결
         storeListAdapter = new StoreListAdapter(StoreListPage.this);
+
         storeList = (ListView) findViewById(R.id.store_list);
         storeList.setAdapter(storeListAdapter);
 
         storeList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id){
-                System.out.println("진짜 지랄하지마라");
                 Intent myIntent = new Intent(StoreListPage.this, StoreDetailPage.class);
                 myIntent.putExtra("가게", storeListDatas.get(position).storeName);
                 startActivity(myIntent);
@@ -68,6 +69,9 @@ public class StoreListPage extends AppCompatActivity {
         });
     }
 
+    public void onClick(View v){
+        finish();
+    }
     public void CategoryButtonClicked(View v) {
 
         Cursor category_cursor;
@@ -98,7 +102,7 @@ public class StoreListPage extends AppCompatActivity {
             store_cursor = db.rawQuery("SELECT * FROM store WHERE category_id='" + (category_cursor.getInt(0)-1) + "';", null);
             while (store_cursor.moveToNext()) {
                 storeListDatas.add(new StoreListData(store_cursor.getString(6), store_cursor.getString(1), selectedCategory,
-                        store_cursor.getString(4), store_cursor.getString(3)));
+                        store_cursor.getString(4), store_cursor.getString(3), store_cursor.getLong(9)));
             }
         }
 
@@ -108,6 +112,7 @@ public class StoreListPage extends AppCompatActivity {
 
     public class StoreListAdapter extends ArrayAdapter<StoreListData> {
         private final Activity context;
+        private Cursor cursor;
         public StoreListAdapter(Activity context) {
             super(context, R.layout.store_list, storeListDatas);
             this.context = context;
@@ -116,6 +121,7 @@ public class StoreListPage extends AppCompatActivity {
         @Override
         public View getView(int i, View view, ViewGroup viewGroup) {
             LayoutInflater inflater = context.getLayoutInflater();
+
             View rowView = inflater.inflate(R.layout.store_list, null, true);
 
             ImageView storeImage = (ImageView) rowView.findViewById(R.id.store_list_image);
@@ -128,6 +134,11 @@ public class StoreListPage extends AppCompatActivity {
             rating.setText(storeListDatas.get(i).rating);
             TextView location = (TextView) rowView.findViewById(R.id.location);
             location.setText(storeListDatas.get(i).location);
+
+            if(storeListDatas.get(i).heart == 1){
+                ImageButton heartButton = (ImageButton) rowView.findViewById(R.id.heartButton);
+                heartButton.setImageResource(R.drawable.heart);
+            }
 
             return rowView;
         }
@@ -171,6 +182,7 @@ public class StoreListPage extends AppCompatActivity {
             }catch (InterruptedException e){
                 System.out.println("에러3");
             }
+
         }
     }
 }

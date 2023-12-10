@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -15,11 +16,12 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
-public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MapActivity extends AppCompatActivity implements OnMapReadyCallback,GoogleMap.OnInfoWindowClickListener{
 
     private GoogleMap mMap;
     SQLiteDatabase db;
@@ -79,8 +81,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 markerOptions.title(cursor.getString(1));
                 markerOptions.snippet(cursor.getString(4));
                 mMap.addMarker(markerOptions);
+                mMap.setOnInfoWindowClickListener(this);
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 16));
             }
         }
     }
+    @Override
+    public void onInfoWindowClick(Marker marker){
+        Intent myIntent = new Intent(MapActivity.this, StoreDetailPage.class);
+        myIntent.putExtra("가게", marker.getTitle());
+        startActivity(myIntent);
+    }
+
 }

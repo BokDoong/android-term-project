@@ -82,14 +82,14 @@
             android:textSize="11sp"></TextView>
 
         <ImageButton
+            android:id="@+id/heartButton"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_toRightOf="@id/category_name"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/category_name"
             android:background="#FFFFFF"
-            android:src="@drawable/unselected_heart"
-            ></ImageButton>
+            android:src="@drawable/unselected_heart"></ImageButton>
     </RelativeLayout>
 
     <TextView

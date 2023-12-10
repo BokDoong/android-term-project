@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteException;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -124,7 +125,9 @@ public class StoreDetailPage extends AppCompatActivity implements OnMapReadyCall
             e.printStackTrace();
         }
     }
-
+    public void onClick(View v){
+        finish();
+    }
     // NULL이 아닌 GoogleMap 객체를 파라미터로 제공해 줄 수 있을 때 호출
     @Override
     public void onMapReady(final GoogleMap googleMap) {

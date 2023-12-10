@@ -23,7 +23,9 @@
         <activity
             android:name=".StoreDetailPage"
             android:exported="true" />
-
+        <activity
+            android:name=".RealMainPage"
+            android:exported="true" />
         <activity
             android:name=".StoreListPage"
             android:exported="true" />
