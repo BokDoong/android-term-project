@@ -64,6 +64,9 @@ public class StoreListPage extends AppCompatActivity {
         Cursor category_cursor;
         Cursor store_cursor;
 
+        // 기존의 가게 데이터 초기화
+        storeListDatas.clear();
+
         // 이미 선택된 버튼 기본 상태로 전환
         if(beforeCategoryButton != null){
             beforeCategoryButton.setBackgroundResource(R.drawable.button_design);
@@ -106,15 +109,15 @@ public class StoreListPage extends AppCompatActivity {
             LayoutInflater inflater = context.getLayoutInflater();
             View rowView = inflater.inflate(R.layout.store_list, null, true);
 
-            ImageView storeImage = (ImageView) view.findViewById(R.id.store_list_image);
+            ImageView storeImage = (ImageView) rowView.findViewById(R.id.store_list_image);
             showStoreImage(storeListDatas.get(i).imageUrl, storeImage);
-            TextView storeName = (TextView) view.findViewById(R.id.store_name);
+            TextView storeName = (TextView) rowView.findViewById(R.id.store_name);
             storeName.setText(storeListDatas.get(i).storeName);
-            TextView categoryName = (TextView) view.findViewById(R.id.category_name);
+            TextView categoryName = (TextView) rowView.findViewById(R.id.category_name);
             categoryName.setText(storeListDatas.get(i).categoryName);
-            TextView rating = (TextView) view.findViewById(R.id.rating);
+            TextView rating = (TextView) rowView.findViewById(R.id.rating);
             rating.setText(storeListDatas.get(i).rating);
-            TextView location = (TextView) view.findViewById(R.id.location);
+            TextView location = (TextView) rowView.findViewById(R.id.location);
             location.setText(storeListDatas.get(i).location);
 
             return rowView;
