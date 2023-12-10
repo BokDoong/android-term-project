@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // DB Helper
         helper = new DBHelper(this);
         try {
             db = helper.getWritableDatabase();
@@ -92,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
 
         // 가게명으로 카테고리 id 조회
         store_cursor = db.rawQuery("SELECT * FROM store WHERE name='" + storeName + "';", null);
-
         if (store_cursor.moveToNext()) {
             // 카테고리 이름 조회
             Cursor category_cursor = db.rawQuery("SELECT name FROM category WHERE _id='" + store_cursor.getInt(5) + "';", null);

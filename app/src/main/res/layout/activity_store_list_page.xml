@@ -93,10 +93,12 @@
     </RelativeLayout>
 
     <HorizontalScrollView
+        android:id="@+id/categories"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="45dp"
         android:layout_below="@+id/header_02"
-        android:layout_marginTop="0dp">
+        android:layout_marginTop="0dp"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -278,5 +280,29 @@
         </LinearLayout>
     </HorizontalScrollView>
 
+    <View
+        android:id="@+id/separated_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_centerInParent="true"
+        android:background="#E6E6E6"
+        android:layout_below="@+id/categories"/>
+
+    <TextView
+        android:id="@+id/intro_category"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/separated_line"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="@font/pretendard_bold"
+        android:textSize="25dp"
+        android:text="이진"/>
+
+    <ListView
+        android:id="@+id/store_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/intro_category"/>
 
 </RelativeLayout>

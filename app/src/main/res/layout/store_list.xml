@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF">
+
+    <ImageView
+        android:id="@+id/store_list_image"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/ic_launcher_foreground"/>
+
+    <TextView
+        android:id="@+id/store_name"
+        android:layout_width="150dp"
+        android:layout_height="26dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/store_list_image"
+        android:fontFamily="@font/pretendard"
+        android:text="예시 텍스트"
+        android:textColor="#1F2021"
+        android:textSize="18sp"></TextView>
+
+    <TextView
+        android:id="@+id/category_name"
+        android:layout_width="20dp"
+        android:layout_height="16dp"
+        android:layout_toRightOf="@id/store_name"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"
+        android:text="예시"
+        android:fontFamily="@font/pretendard"
+        android:textColor="#98989E"
+        android:textSize="11sp">
+    </TextView>
+
+    <ImageView
+        android:id="@+id/star"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_below="@+id/store_name"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@id/store_list_image"
+        android:src="@drawable/star"></ImageView>
+
+    <TextView
+        android:id="@+id/rating"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_below="@+id/store_name"
+        android:layout_toRightOf="@id/star"
+        android:layout_marginLeft="3dp"
+        android:fontFamily="@font/pretendard"
+        android:text="3.4"
+        android:textColor="#5C5D61"
+        android:textSize="12sp"></TextView>
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_below="@+id/store_name"
+        android:layout_toRightOf="@id/rating"
+        android:layout_marginLeft="3dp"
+        android:text="몰라 어딘지"
+        android:fontFamily="@font/pretendard"
+        android:textColor="#5C5D61"
+        android:textSize="11sp"></TextView>
+
+    <ImageButton
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_toRightOf="@id/category_name"
+        android:layout_marginLeft="125dp"
+        android:layout_marginTop="10dp"
+        android:background="#FFFFFF"
+        android:src="@drawable/unselected_heart"
+        ></ImageButton>
+</RelativeLayout>
+
