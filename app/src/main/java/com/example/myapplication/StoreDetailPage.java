@@ -37,6 +37,7 @@ public class StoreDetailPage extends AppCompatActivity implements OnMapReadyCall
     TextView address;
     TextView rating;
     TextView phone;
+    String store = "밥";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,14 +61,13 @@ public class StoreDetailPage extends AppCompatActivity implements OnMapReadyCall
     }
 
     public void hingguri() {
-        String store = "밥";
         Cursor store_cursor;
 
         // 가게명으로 데이터베이스 조회
         store_cursor = db.rawQuery("SELECT * FROM store WHERE name='" + store + "';", null);
         if (store_cursor.moveToNext()) {
             // 카테고리 이름 조회
-            Cursor category_cursor = db.rawQuery("SELECT name FROM category WHERE _id='" + store_cursor.getString(5) + "';", null);
+            Cursor category_cursor = db.rawQuery("SELECT name FROM category WHERE _id='" + (store_cursor.getInt(5)+1) + "';", null);
             // 이미지 url 로 이미지 출력
             showStoreImage(store_cursor.getString(6));
             storeName.setText(store_cursor.getString(1));
@@ -77,9 +77,6 @@ public class StoreDetailPage extends AppCompatActivity implements OnMapReadyCall
             phone.setText(store_cursor.getString(2));
             if (category_cursor.moveToNext()) {
                 category.setText(category_cursor.getString(0));
-            }
-            else{
-                category.setText("한식");
             }
         }
     }
@@ -130,7 +127,6 @@ public class StoreDetailPage extends AppCompatActivity implements OnMapReadyCall
     public void onMapReady(final GoogleMap googleMap) {
         mMap = googleMap;
 
-        String store = "밥";
         Cursor cursor;
         cursor = db.rawQuery("SELECT * FROM store WHERE name='" + store + "';", null);
 
