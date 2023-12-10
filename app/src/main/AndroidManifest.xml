@@ -21,6 +21,10 @@
             android:value="AIzaSyCaPB_bCh3HEv12JGbS97MB9Zcm47ma_1I" />
 
         <activity
+            android:name=".RealMainPage"
+            android:exported="true" />
+
+        <activity
             android:name=".StoreDetailPage"
             android:exported="true" />
         <activity

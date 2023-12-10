@@ -204,7 +204,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="35dp"
-                android:background="@drawable/heart"
+                android:background="@drawable/unselcected_main_heart"
                 android:drawablePadding="4dp"
                 android:gravity="center_horizontal|center_vertical" />
 
