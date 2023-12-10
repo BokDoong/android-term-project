@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -37,7 +38,7 @@ public class StoreDetailPage extends AppCompatActivity implements OnMapReadyCall
     TextView address;
     TextView rating;
     TextView phone;
-    String store = "밥";
+    String store;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +57,8 @@ public class StoreDetailPage extends AppCompatActivity implements OnMapReadyCall
         }
         SupportMapFragment mapFragment = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.mapDetail);
         mapFragment.getMapAsync(this);
+        Intent secondIntent = getIntent();
+        store = secondIntent.getStringExtra("가게");
         hingguri();
 
     }

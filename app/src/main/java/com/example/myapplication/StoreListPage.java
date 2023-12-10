@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -60,7 +61,9 @@ public class StoreListPage extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View v, int position, long id){
                 System.out.println("진짜 지랄하지마라");
-                Toast.makeText(getBaseContext(), "asdfasdf", Toast.LENGTH_SHORT).show();
+                Intent myIntent = new Intent(StoreListPage.this, StoreDetailPage.class);
+                myIntent.putExtra("가게", storeListDatas.get(position).storeName);
+                startActivity(myIntent);
             }
         });
     }
