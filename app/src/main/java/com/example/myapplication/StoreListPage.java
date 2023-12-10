@@ -88,8 +88,8 @@ public class StoreListPage extends AppCompatActivity {
             // 3. 카테고리 Id 를 갖는 가게 조회 + ArrayList 에 추가
             store_cursor = db.rawQuery("SELECT * FROM store WHERE category_id='" + (category_cursor.getInt(0)-1) + "';", null);
             while (store_cursor.moveToNext()) {
-                storeListDatas.add(new StoreListData(store_cursor.getString(5), store_cursor.getString(1), selectedCategory,
-                        store_cursor.getString(3), store_cursor.getString(2)));
+                storeListDatas.add(new StoreListData(store_cursor.getString(6), store_cursor.getString(1), selectedCategory,
+                        store_cursor.getString(4), store_cursor.getString(3)));
             }
         }
 
@@ -141,9 +141,9 @@ public class StoreListPage extends AppCompatActivity {
                         bitmap = BitmapFactory.decodeStream(is); // Bitmap으로 변환
 
                     }catch (MalformedURLException e){
-                        e.printStackTrace();
+                        System.out.println("에러1");
                     }catch (IOException e){
-                        e.printStackTrace();
+                        System.out.println("에러2");
                     }
                 }
             };
@@ -160,9 +160,8 @@ public class StoreListPage extends AppCompatActivity {
                 //UI 작업을 할 수 있는 메인 Thread에서 ImageView에 이미지 지정
                 imageView.setImageBitmap(bitmap);
             }catch (InterruptedException e){
-                e.printStackTrace();
+                System.out.println("에러3");
             }
         }
-
     }
 }

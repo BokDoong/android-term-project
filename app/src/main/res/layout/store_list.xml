@@ -47,13 +47,13 @@
 
     <TextView
         android:id="@+id/rating"
-        android:layout_width="18dp"
+        android:layout_width="23dp"
         android:layout_height="18dp"
         android:layout_below="@+id/store_name"
         android:layout_toRightOf="@id/star"
         android:layout_marginLeft="3dp"
         android:fontFamily="@font/pretendard"
-        android:text="3.4"
+        android:text="없음"
         android:textColor="#5C5D61"
         android:textSize="12sp"></TextView>
 
@@ -73,7 +73,7 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_toRightOf="@id/category_name"
-        android:layout_marginLeft="125dp"
+        android:layout_marginLeft="100dp"
         android:layout_marginTop="10dp"
         android:background="#FFFFFF"
         android:src="@drawable/unselected_heart"
