@@ -13,11 +13,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,7 +33,6 @@ public class StoreListPage extends AppCompatActivity {
     private ListView storeList;
     private ArrayList<StoreListData> storeListDatas = new ArrayList<>();
     private Bitmap bitmap;
-    private TextView logView;
 
     DBHelper helper;
     SQLiteDatabase db;
@@ -50,13 +51,18 @@ public class StoreListPage extends AppCompatActivity {
             db = helper.getReadableDatabase();
         }
 
-        // 로깅
-        logView = (TextView) findViewById(R.id.intro_category);
-
         // 리스트 뷰 + 어댑터 연결
         storeListAdapter = new StoreListAdapter(StoreListPage.this);
         storeList = (ListView) findViewById(R.id.store_list);
         storeList.setAdapter(storeListAdapter);
+
+        storeList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id){
+                System.out.println("진짜 지랄하지마라");
+                Toast.makeText(getBaseContext(), "asdfasdf", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void CategoryButtonClicked(View v) {
