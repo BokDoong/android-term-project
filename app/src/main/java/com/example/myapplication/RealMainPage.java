@@ -12,8 +12,6 @@ import android.widget.GridView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class RealMainPage extends AppCompatActivity {
-    DBHelper helper;
-    SQLiteDatabase db;
     // 10개의 이미지 및 텍스트를 어댑터에 추가
     int[] imageIds = {R.drawable.korean, R.drawable.chinese, R.drawable.western,
             R.drawable.japanese, R.drawable.cafe, R.drawable.bar,
@@ -32,14 +30,6 @@ public class RealMainPage extends AppCompatActivity {
 
         gridView = (GridView) findViewById(R.id.grid_view);
         imageTextAdapter = new ImageTextAdapter(this, imageIds, textArray);
-
-        // DB Helper
-        helper = new DBHelper(this);
-        try {
-            db = helper.getWritableDatabase();
-        } catch (SQLiteException ex) {
-            db = helper.getReadableDatabase();
-        }
 
         gridView.setAdapter(imageTextAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

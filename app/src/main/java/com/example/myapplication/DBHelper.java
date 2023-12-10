@@ -96,8 +96,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO store (name, tel, address, rating, category_id, image_url, latitude, longitude, heart) VALUES ('싱귤러커피','052-225-5863','울산 남구 대학로1번길 3-35 1층','4.80',4,'https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20220423_13%2F1650641437367DGF4V_JPEG%2FIMG_20191127_152114_120.jpg',35.53544, 129.2515, 0);");
         db.execSQL("INSERT INTO store (name, tel, address, rating, category_id, image_url, latitude, longitude, heart) VALUES ('춘리마라탕 무거점','0507-1405-5779','울산 남구 옥현로 57 1층','없음',1,'https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230201_24%2F1675253445815XvxdH_JPEG%2F20230201_210700.jpg',35.54157, 129.2613, 0);");
         db.execSQL("INSERT INTO store (name, tel, address, rating, category_id, image_url, latitude, longitude, heart) VALUES ('팔각도 울산무거점','0507-1498-8947','무거동 행정복지센터 100M전','없음',5,'https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230530_44%2F1685440550152uESL0_JPEG%2F003.jpg',35.54935, 129.2615, 0);");
-
-
     }
 
     @Override

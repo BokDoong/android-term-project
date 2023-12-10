@@ -60,11 +60,11 @@ public class StoreDetailPage extends AppCompatActivity implements OnMapReadyCall
         mapFragment.getMapAsync(this);
         Intent secondIntent = getIntent();
         store = secondIntent.getStringExtra("가게");
-        hingguri();
+        initialize();
 
     }
 
-    public void hingguri() {
+    public void initialize() {
         Cursor store_cursor;
 
         // 가게명으로 데이터베이스 조회
@@ -93,8 +93,7 @@ public class StoreDetailPage extends AppCompatActivity implements OnMapReadyCall
                 try{
                     // 이미지 URL 경로
                     URL url = new URL(imgUrl);
-
-                    // web에서 이미지를 가져와 ImageView에 저장할 Bitmap을 만든다.
+                    // web에서 이미지를 가져와 Bitmap을 만듬.
                     HttpURLConnection conn = (HttpURLConnection)url.openConnection();
                     conn.setDoInput(true); // 서버로부터 응답 수신
                     conn.connect(); //연결된 곳에 접속할 때 (connect() 호출해야 실제 통신 가능함)
@@ -113,13 +112,7 @@ public class StoreDetailPage extends AppCompatActivity implements OnMapReadyCall
         uThread.start(); // 작업 Thread 실행
 
         try{
-            //메인 Thread는 별도의 작업 Thread가 작업을 완료할 때까지 대기해야 한다.
-            //join() 호출하여 별도의 작업 Thread가 종료될 때까지 메인 Thread가 기다리도록 한다.
-            //join() 메서드는 InterruptedException을 발생시킨다.
             uThread.join();
-
-            //작업 Thread에서 이미지를 불러오는 작업을 완료한 뒤
-            //UI 작업을 할 수 있는 메인 Thread에서 ImageView에 이미지 지정
             imageView.setImageBitmap(bitmap);
         }catch (InterruptedException e){
             e.printStackTrace();
