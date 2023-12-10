@@ -105,7 +105,7 @@ public class StoreListPage extends AppCompatActivity {
             store_cursor = db.rawQuery("SELECT * FROM store WHERE category_id='" + (category_cursor.getInt(0)-1) + "';", null);
             while (store_cursor.moveToNext()) {
                 storeListDatas.add(new StoreListData(store_cursor.getString(6), store_cursor.getString(1), selectedCategory,
-                        store_cursor.getString(4), store_cursor.getString(3), store_cursor.getLong(9)));
+                        store_cursor.getString(4), store_cursor.getString(3), store_cursor.getInt(9)));
             }
         }
 
@@ -168,11 +168,13 @@ public class StoreListPage extends AppCompatActivity {
                     if (storeListDatas.get(i).heart == 0) {
                         // db.rawQuery("SELECT * FROM category WHERE name='" + selectedCategory + "';", null);
                         // 0 이면 1 로 DB 에서 바꾸고, 꽉 찬 하트로 바꾸기
-                        db.rawQuery("UPDATE store SET heart=1 WHERE name='" + storeName + "';", null);
+                        db.execSQL("UPDATE store SET heart=1 WHERE name='" + storeName + "';");
+                        storeListDatas.get(i).heart = 1;
                         heartButton.setImageResource(R.drawable.heart);
                     } else {
                         // 1 이면 0 으로 DB 에서 바꾸고, 빈 하트로 바꾸기
-                        db.rawQuery("UPDATE store SET heart=0 WHERE name='" + storeName + "';", null);
+                        db.execSQL("UPDATE store SET heart=0 WHERE name='" + storeName + "';");
+                        storeListDatas.get(i).heart = 0;
                         heartButton.setImageResource(R.drawable.unselected_heart);
                     }
                 }

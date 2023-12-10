@@ -6,9 +6,9 @@ public class StoreListData {
     public String categoryName;
     public String rating;
     public String location;
-    public Long heart;
+    public int heart;
 
-    public StoreListData(String imageUrl, String storeName, String categoryName, String rating, String location, Long heart) {
+    public StoreListData(String imageUrl, String storeName, String categoryName, String rating, String location, int heart) {
         this.imageUrl = imageUrl;
         this.storeName = storeName;
         this.categoryName = categoryName;
