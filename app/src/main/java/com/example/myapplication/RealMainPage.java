@@ -39,4 +39,8 @@ public class RealMainPage extends AppCompatActivity {
             }
         });
     }
+    public void onClickMap(View v){
+        Intent myIntent = new Intent(RealMainPage.this, MapActivity.class);
+        startActivity(myIntent);
+    }
 }

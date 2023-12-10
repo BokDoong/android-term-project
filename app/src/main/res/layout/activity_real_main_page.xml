@@ -225,7 +225,8 @@
         <RelativeLayout
             android:id="@+id/elements_mo2"
             android:layout_width="82dp"
-            android:layout_height="54dp">
+            android:layout_height="54dp"
+            android:onClick="onClickMap">
 
             <Button
                 android:id="@+id/btn_map"
@@ -234,6 +235,7 @@
                 android:layout_marginLeft="35dp"
                 android:background="@drawable/map"
                 android:drawablePadding="4dp"
+                android:onClick="onClickMap"
                 android:gravity="center_horizontal|center_vertical" />
 
             <TextView
