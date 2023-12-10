@@ -126,7 +126,8 @@ public class StoreListPage extends AppCompatActivity {
             }
         }
 
-        Button button = (Button) findViewById(2131296359 + index);
+        int startButtonId = R.id.btn1;
+        Button button = (Button) findViewById(startButtonId + index);
         button.performClick();
     }
 
