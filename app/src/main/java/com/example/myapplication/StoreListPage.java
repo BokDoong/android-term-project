@@ -39,11 +39,13 @@ public class StoreListPage extends AppCompatActivity {
     DBHelper helper;
     SQLiteDatabase db;
     StoreListAdapter storeListAdapter;
-
+    String category;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_list_page);
+        Intent secondIntent = getIntent();
+        category = secondIntent.getStringExtra("카테고리");
 
         // DB 초기화
         helper = new DBHelper(this);
@@ -58,6 +60,9 @@ public class StoreListPage extends AppCompatActivity {
 
         storeList = (ListView) findViewById(R.id.store_list);
         storeList.setAdapter(storeListAdapter);
+
+        // 메인 -> 카테고리 페이지
+        movedByMainPage();
 
         storeList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
@@ -108,6 +113,33 @@ public class StoreListPage extends AppCompatActivity {
 
         // 어댑터에게 데이터 변경을 알리고 리스트뷰를 갱신
         storeListAdapter.notifyDataSetChanged();
+    }
+
+    public void movedByMainPage() {
+
+        String[] storeArray = {"한식", "중식", "양식", "일식", "카페",
+                "술집", "분식", "아시아", "패스트푸드", "레스토랑"};
+
+        int index = 0;
+        for (int i = 0; i < 10; i++) {
+            if (storeArray[i].equals(category)) {
+                index = i;
+                break;
+            }
+        }
+
+        int btnId;
+        if (index == 0) {
+            btnId = 2131296359;
+        } else if (index == 9) {
+            btnId = 2131296360;
+        } else {
+            btnId = 2131296360 + index;
+        }
+
+        Button button = (Button) findViewById(btnId);
+        button.performClick();
+
     }
 
     public class StoreListAdapter extends ArrayAdapter<StoreListData> {

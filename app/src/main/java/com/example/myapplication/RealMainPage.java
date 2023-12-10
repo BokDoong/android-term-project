@@ -1,7 +1,10 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,5 +30,13 @@ public class RealMainPage extends AppCompatActivity {
         imageTextAdapter = new ImageTextAdapter(this, imageIds, textArray);
 
         gridView.setAdapter(imageTextAdapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent myIntent = new Intent(RealMainPage.this, StoreListPage.class);
+                myIntent.putExtra("카테고리", textArray[i]);
+                startActivity(myIntent);
+            }
+        });
     }
 }
