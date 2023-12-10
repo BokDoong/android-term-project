@@ -61,6 +61,18 @@ public class StoreListPage extends AppCompatActivity {
         storeList = (ListView) findViewById(R.id.store_list);
         storeList.setAdapter(storeListAdapter);
 
+        System.out.println(R.id.btn1);
+        System.out.println(R.id.btn2);
+        System.out.println(R.id.btn3);
+        System.out.println(R.id.btn4);
+        System.out.println(R.id.btn5);
+        System.out.println(R.id.btn6);
+        System.out.println(R.id.btn7);
+        System.out.println(R.id.btn8);
+        System.out.println(R.id.btn9);
+        System.out.println(R.id.btn10);
+
+
         // 메인 -> 카테고리 페이지
         movedByMainPage();
 
@@ -117,8 +129,8 @@ public class StoreListPage extends AppCompatActivity {
 
     public void movedByMainPage() {
 
-        String[] storeArray = {"한식", "중식", "양식", "일식", "카페",
-                "술집", "분식", "아시아", "패스트푸드", "레스토랑"};
+        String[] storeArray = {"한식", "레스토랑", "중식", "양식", "일식", "카페",
+                "술집", "분식", "아시아", "패스트푸드"};
 
         int index = 0;
         for (int i = 0; i < 10; i++) {
@@ -128,18 +140,10 @@ public class StoreListPage extends AppCompatActivity {
             }
         }
 
-        int btnId;
-        if (index == 0) {
-            btnId = 2131296359;
-        } else if (index == 9) {
-            btnId = 2131296360;
-        } else {
-            btnId = 2131296360 + index;
-        }
-
-        Button button = (Button) findViewById(btnId);
+        Button button = (Button) findViewById(2131296359 + index);
+        System.out.println(2131296359 + index);
+        System.out.println("여기까지는 OK");
         button.performClick();
-
     }
 
     public class StoreListAdapter extends ArrayAdapter<StoreListData> {
