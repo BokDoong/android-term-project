@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,7 +25,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     SQLiteDatabase db;
     DBHelper helper;
     ArrayList<LatLng> stores = new ArrayList<>();
-
+    Button beforeButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +47,16 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap = googleMap;
     }
     public void markCategory(View view) {
+        if(beforeButton != null){
+            beforeButton.setBackgroundResource(R.drawable.button_design);
+            beforeButton.setTextColor(Color.parseColor("#000000"));
+        }
+
         Button button = (Button) findViewById(view.getId());
+        button.setBackgroundResource(R.drawable.clicked_button_design);
+        button.setTextColor(Color.parseColor("#FFFFFF"));
+        beforeButton = button;
+
         Cursor cursor;
         Cursor categoryCursor;
         int category=0;
@@ -55,7 +65,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         mMap.clear();
         while(categoryCursor.moveToNext()){
             if(categoryCursor.getString(1).equals(button.getText())){
-                category = categoryCursor.getInt(0);
+                category = categoryCursor.getInt(0)-1;
                 break;
             }
         }
