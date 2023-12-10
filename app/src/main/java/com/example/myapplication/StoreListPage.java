@@ -64,14 +64,11 @@ public class StoreListPage extends AppCompatActivity {
         movedByMainPage(category);
 
         // ListView 이벤트
-        // ListView 클릭
-        storeList.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id){
-                Intent myIntent = new Intent(StoreListPage.this, StoreDetailPage.class);
-                myIntent.putExtra("가게", storeListDatas.get(position).storeName);
-                startActivity(myIntent);
-            }
+        // 1. ListView 클릭했을 때 -> 상세페이지 이동
+        storeList.setOnItemClickListener((parent, v, position, id) -> {
+            Intent myIntent = new Intent(StoreListPage.this, StoreDetailPage.class);
+            myIntent.putExtra("가게", storeListDatas.get(position).storeName);
+            startActivity(myIntent);
         });
     }
 
@@ -157,11 +154,29 @@ public class StoreListPage extends AppCompatActivity {
             rating.setText(storeListDatas.get(i).rating);
             TextView location = (TextView) rowView.findViewById(R.id.location);
             location.setText(storeListDatas.get(i).location);
+            ImageButton heartButton = (ImageButton) rowView.findViewById(R.id.heartButton);
 
+            // 1이면 빈하트
             if(storeListDatas.get(i).heart == 1){
-                ImageButton heartButton = (ImageButton) rowView.findViewById(R.id.heartButton);
                 heartButton.setImageResource(R.drawable.heart);
             }
+
+            heartButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // 0,1 판별
+                    if (storeListDatas.get(i).heart == 0) {
+                        // db.rawQuery("SELECT * FROM category WHERE name='" + selectedCategory + "';", null);
+                        // 0 이면 1 로 DB 에서 바꾸고, 꽉 찬 하트로 바꾸기
+                        db.rawQuery("UPDATE store SET heart=1 WHERE name='" + storeName + "';", null);
+                        heartButton.setImageResource(R.drawable.heart);
+                    } else {
+                        // 1 이면 0 으로 DB 에서 바꾸고, 빈 하트로 바꾸기
+                        db.rawQuery("UPDATE store SET heart=0 WHERE name='" + storeName + "';", null);
+                        heartButton.setImageResource(R.drawable.unselected_heart);
+                    }
+                }
+            });
 
             return rowView;
         }
