@@ -94,12 +94,11 @@
             android:layout_width="343dp"
             android:layout_height="42dp"
             android:layout_marginLeft="25dp"
-            android:gravity="center"
             android:background="@drawable/searchbar"
             android:clipToOutline="true"
-            android:text="오늘의 맛집을 찾아보세요"
             android:fontFamily="@font/pretendard"
-            android:textColor="#98989E"/>
+            android:gravity="center"
+            android:textColor="#98989E" />
 
         <ImageView
             android:id="@+id/search"
@@ -112,6 +111,21 @@
             android:layout_marginTop="11dp"
             android:clipToOutline="true"
             android:src="@drawable/search" />
+
+        <Button
+            android:id="@+id/searchButton"
+            android:onClick="onClickSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30sp"
+            android:background="@drawable/button_design"
+            android:fontFamily="@font/pretendard"
+            android:letterSpacing="-0.02"
+            android:lineSpacingExtra="9sp"
+            android:text="검색"
+            android:textColor="#5C5D61"
+            android:textSize="16sp" />
 
     </RelativeLayout>
 

@@ -132,7 +132,7 @@
                 android:fontFamily="@font/pretendard_bold"
                 android:letterSpacing="-0.02"
                 android:lineHeight="26sp"
-                android:text="울산대학교 공차점"
+                android:text="존재하지 않는 가게 입니다."
                 android:textSize="18sp" />
 
             <TextView
@@ -144,7 +144,7 @@
                 android:fontFamily="@font/pretendard"
                 android:letterSpacing="0.02"
                 android:lineHeight="18sp"
-                android:text="안바뀜"
+                android:text=""
                 android:textColor="#B5B6BD"
                 android:textSize="12sp" />
 
@@ -204,7 +204,6 @@
                 android:id="@+id/address_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="울산 남구 대학로 169번길 2"
                 android:lineSpacingExtra="3sp"
                 android:layout_gravity="center"
                 android:gravity="top"
