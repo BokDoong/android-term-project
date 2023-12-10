@@ -24,9 +24,7 @@
         <activity
             android:name=".RealMainPage"
             android:exported="true" />
-        <activity
-            android:name=".HomeActivity"
-            android:exported="true" />
+
         <activity
             android:name=".StoreDetailPage"
             android:exported="true" />
