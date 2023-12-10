@@ -86,7 +86,7 @@ public class StoreListPage extends AppCompatActivity {
         category_cursor = db.rawQuery("SELECT * FROM category WHERE name='" + selectedCategory + "';", null);
         if (category_cursor.moveToNext()) {
             // 3. 카테고리 Id 를 갖는 가게 조회 + ArrayList 에 추가
-            store_cursor = db.rawQuery("SELECT * FROM store WHERE category_id='" + category_cursor.getInt(0) + "';", null);
+            store_cursor = db.rawQuery("SELECT * FROM store WHERE category_id='" + (category_cursor.getInt(0)-1) + "';", null);
             while (store_cursor.moveToNext()) {
                 storeListDatas.add(new StoreListData(store_cursor.getString(5), store_cursor.getString(1), selectedCategory,
                         store_cursor.getString(3), store_cursor.getString(2)));
